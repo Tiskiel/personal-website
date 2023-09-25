@@ -1,0 +1,9 @@
+# Ignore artifacts:
+bootstrap
+build
+coverage
+vendor
+package-lock.json
+pnpm-lock.yaml
+composer.lock
+storage

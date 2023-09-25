@@ -1,0 +1,26 @@
+{
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "avoid",
+    "printWidth": 120,
+    "overrides": [
+        {
+            "files": ["./resources/**/*.{js,jsx,ts,tsx}"],
+            "options": {
+                "tabWidth": 2,
+                "singleQuote": true,
+                "trailingComma": "es5",
+                "arrowParens": "avoid",
+                "printWidth": 120
+            }
+        },
+        {
+            "files": ["**/*.json"],
+            "options": {
+                "tabWidth": 4,
+                "singleQuote": false
+            }
+        }
+    ]
+}
