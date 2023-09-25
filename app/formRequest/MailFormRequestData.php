@@ -3,7 +3,9 @@
 namespace App\formRequest;
 
 use Spatie\LaravelData\Data;
+use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
+#[TypeScript]
 class MailFormRequestData extends Data
 {
     public function __construct(
@@ -11,9 +13,10 @@ class MailFormRequestData extends Data
         public string $email,
         public string $subject,
         public string $message,
-    ) {}
+    ) {
+    }
 
-    public static function rules() : array
+    public static function rules(): array
     {
         return [
             'name' => ['required', 'string', 'min:2', 'max:100'],
