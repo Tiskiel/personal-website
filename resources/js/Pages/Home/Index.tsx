@@ -30,7 +30,7 @@ function Index() {
         </div>
       </main>
 
-      <aside className="bg-slate-100 rounded-md p-1 flex flex-col justify-center">
+      <aside className="bg-slate-100 rounded-md p-4 flex flex-col justify-center">
         <p className="text-black text-lg mb-4">
           I am someone passionate and curious. I really enjoy learning and tackling challenges.
         </p>
@@ -44,7 +44,9 @@ function Index() {
         </p>
       </aside>
 
-      <div className="bg-red-200 rounded-md p-4 flex flex-col justify-center">test</div>
+      <div className="bg-red-200 rounded-md p-4 flex flex-col justify-center">
+        <h3 className="strong">My projects</h3>
+      </div>
     </div>
   );
 }
