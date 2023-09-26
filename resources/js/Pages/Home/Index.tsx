@@ -3,8 +3,8 @@ import { ReactNode } from 'react';
 
 function Index() {
   return (
-    <div className="grid grid-cols-[2fr,1fr] gap-5 p-4">
-      <main className="bg-slate-200 rounded-md p-4 flex flex-col justify-center items-center min-h-screen">
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr]">
+      <main className="bg-slate-200 rounded-md p-4 flex flex-col justify-center items-center min-h-screen md:col-span-2">
         <div className="max-w-xl w-full">
           <p className="text-lg mb-4">
             Following a career change, I turned towards web-oriented programming training. It may seem quite simple, but
@@ -30,7 +30,7 @@ function Index() {
         </div>
       </main>
 
-      <aside className="bg-slate-100 rounded-md p-4 flex flex-col justify-center">
+      <aside className="bg-slate-100 rounded-md p-1 flex flex-col justify-center">
         <p className="text-black text-lg mb-4">
           I am someone passionate and curious. I really enjoy learning and tackling challenges.
         </p>
