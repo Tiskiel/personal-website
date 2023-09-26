@@ -1,4 +1,5 @@
 import HomeLayout from '@/Layouts/HomeLayout';
+import { Link } from '@inertiajs/react';
 import { ReactNode } from 'react';
 
 function Index() {
@@ -45,7 +46,14 @@ function Index() {
       </aside>
 
       <div className="bg-red-200 rounded-md p-4 flex flex-col justify-center">
-        <h3 className="strong">My projects</h3>
+        <h3>My projects</h3>
+        <a href="https://pokemonfinder-ivory.vercel.app/home">
+          <img
+            src="/public/images/Screenshot 2023-09-26 at 10.58.04.png"
+            alt="Pokemon Finder"
+            className="h-96 w-96 object-contain"
+          />
+        </a>
       </div>
     </div>
   );
