@@ -1,16 +1,18 @@
+import React from 'react';
+
 const navigation = {
   main: [
     { name: 'About', href: '#' },
     { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
+    { name: 'contact', href: '#' },
     { name: 'Press', href: '#' },
-    { name: 'Accessibility', href: '#' },
-    { name: 'Partners', href: '#' },
+    // { name: 'Accessibility', href: '#' },
+    // { name: 'Partners', href: '#' },
   ],
   social: [
     {
       name: 'Instagram',
-      href: '#',
+      href: 'https://instagram.com/wanty_photographer?igshid=MzMyNGUyNmU2YQ==',
       icon: props => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -23,7 +25,7 @@ const navigation = {
     },
     {
       name: 'GitHub',
-      href: '#',
+      href: 'https://github.com/Tiskiel',
       icon: props => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
