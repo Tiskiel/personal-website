@@ -18,7 +18,11 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home/Index');
-});
+})->name('home');
+
+Route::get('/projects', function () {
+    return Inertia::render('Home/Projects');
+})->name('projects');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
