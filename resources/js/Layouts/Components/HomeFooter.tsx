@@ -13,7 +13,7 @@ const navigation = {
     {
       name: 'Instagram',
       href: 'https://instagram.com/wanty_photographer?igshid=MzMyNGUyNmU2YQ==',
-      icon: props => (
+      icon: (props: JSX.Element) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
@@ -26,7 +26,7 @@ const navigation = {
     {
       name: 'GitHub',
       href: 'https://github.com/Tiskiel',
-      icon: props => (
+      icon: (props: JSX.Element) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
