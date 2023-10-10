@@ -4,7 +4,7 @@ import { GitHubLogoIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 
 export default function ProjectShow() {
   return (
-    <div className="bg-slate-50 rounded-md p-4 flex flex-col justify-center">
+    <div className="bg-slate-50 rounded-md p-4 flex flex-col justify-center items-center">
       <h3 className="text-center mb-2 underline text-lg">My projects</h3>
       <div className="max-w-sm rounded-md overflow-hidden shadow-lg">
         <img className="w-full" src="/images/Screenshot 2023-09-26 at 10.58.04.png" alt="pokemon finder" />
