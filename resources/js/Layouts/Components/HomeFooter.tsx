@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
 const navigation = {
   main: [
@@ -13,7 +13,7 @@ const navigation = {
     {
       name: 'Instagram',
       href: 'https://instagram.com/wanty_photographer?igshid=MzMyNGUyNmU2YQ==',
-      icon: (props: JSX.Element) => (
+      icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
@@ -26,7 +26,7 @@ const navigation = {
     {
       name: 'GitHub',
       href: 'https://github.com/Tiskiel',
-      icon: (props: JSX.Element) => (
+      icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
             fillRule="evenodd"
@@ -56,7 +56,7 @@ export default function HomeFooter() {
           {navigation.social.map(item => (
             <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              {item.icon({ className: 'h-6 w-6', 'aria-hidden': 'true' } as React.SVGProps<SVGSVGElement>)}
             </a>
           ))}
         </div>
