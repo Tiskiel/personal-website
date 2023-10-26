@@ -21,7 +21,7 @@ export default function ProjectShow() {
       <Card
         title="Pokemon finder"
         description="This is my first website created with React and used the Pokemon API."
-        image={{ src: '/images/Screenshot 2023-09-26 at 10.58.04.png', alt: 'Pokemon finder' }}
+        image={{ src: '/images/Screenshot 2023-09-26 at 10.58.04.webp', alt: 'Pokemon finder' }}
         logos={logos}
       />
       <div className="text-center mt-2">

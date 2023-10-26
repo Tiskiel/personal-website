@@ -8,7 +8,7 @@ function Projects() {
     {
       title: 'Pokemon finder',
       description: 'This is my first website created with React and used the Pokemon API.',
-      image: { src: '/images/Screenshot 2023-09-26 at 10.58.04.png', alt: 'Pokemon finder' },
+      image: { src: '/images/Screenshot 2023-09-26 at 10.58.04.webp', alt: 'Pokemon finder' },
       logos: [
         {
           link: 'https://github.com/Tiskiel/pokemonFinder',
@@ -24,7 +24,7 @@ function Projects() {
       title: 'Movies Browser',
       description:
         'This website was created using Angular/Ionic in collaboration with a friend. I took care more of the logic side and my friend of the Scss. I really enjoyed working in peer coding.',
-      image: { src: '/images/Screenshot 2023-09-26 at 10.59.12.png', alt: 'Movie Browser' },
+      image: { src: '/images/Screenshot 2023-09-26 at 10.59.12.webp', alt: 'Movie Browser' },
       logos: [
         {
           link: 'https://github.com/Tiskiel/MovieBrowserIonic/tree/main',

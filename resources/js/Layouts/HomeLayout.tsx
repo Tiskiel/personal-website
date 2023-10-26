@@ -4,8 +4,8 @@ import HomeFooter from './Components/HomeFooter';
 const profile = {
   name: 'Jean-François Wanty',
   email: 'wanty.jf@gmail.com',
-  avatar: '/images/DSC_0273.JPG',
-  backgroundImage: '/images/20220808_190627.jpg',
+  avatar: '/images/DSC_0273.webp',
+  backgroundImage: '/images/20220808_190627.webp',
   fields: [
     ['Email', 'wanty.jf@gmail.com'],
     ['Title', 'Junior full-stack developer'],
