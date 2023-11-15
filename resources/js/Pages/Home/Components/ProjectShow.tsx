@@ -16,7 +16,7 @@ export default function ProjectShow() {
   ];
 
   return (
-    <div className="bg-slate-50 rounded-md p-4 flex flex-col justify-center items-center">
+    <div className="bg-gradient-to-r from-indigo-50 rounded-md p-4 flex flex-col justify-center items-center">
       <h3 className="text-center mb-2 underline text-lg">My projects</h3>
       <Card
         title="Pokemon finder"

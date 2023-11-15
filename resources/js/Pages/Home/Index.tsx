@@ -1,16 +1,13 @@
-import PrimaryButton from '@/Components/PrimaryButton';
 import HomeLayout from '@/Layouts/HomeLayout';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shadcn/ui/card';
-import { Link } from '@inertiajs/react';
-import { GitHubLogoIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 import { ReactNode } from 'react';
 import ProjectShow from './Components/ProjectShow';
 
 function Index() {
   return (
-    <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr]">
-      <main className="bg-slate-200 rounded-md p-4 flex flex-col justify-center items-center min-h-screen md:col-span-2">
-        <div className="max-w-xl w-full">
+    <div className="w-full grid grid-cols-1 gap-4  md:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr]">
+      <main className="bg-gradient-to-r from-indigo-200 rounded-md p-4 flex flex-col justify-center items-center min-h-screen md:col-span-2">
+        {/* <img src='images/pngegg.png' alt='brainstorm' className='self-start'/> */}
+        <div className="max-w-xl w-full self-end">
           <p className="text-lg mb-4">
             Following a career change, I turned towards web-oriented programming training. It may seem quite simple, but
             I redirected myself to this sector because I have always loved video games and the world of computers.
@@ -35,7 +32,7 @@ function Index() {
         </div>
       </main>
 
-      <aside className="bg-slate-100 rounded-md p-4 flex flex-col justify-center">
+      <aside className="bg-gradient-to-r from-indigo-200 to-indigo-50 rounded-md p-4 flex flex-col justify-center">
         <p className="text-black text-lg mb-4">
           I am someone passionate and curious. I really enjoy learning and tackling challenges.
         </p>
@@ -48,7 +45,6 @@ function Index() {
           Outside of coding, I love strolling in nature and exploring new horizons with my family.
         </p>
       </aside>
-
       <ProjectShow />
     </div>
   );
