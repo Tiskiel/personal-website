@@ -8,7 +8,7 @@ import ProjectShow from './Components/ProjectShow';
 
 function Index() {
   return (
-    <div className="grid grid-cols-1 gap-5 md:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr]">
+    <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-[2fr,1fr] xl:grid-cols-[2fr,1fr]">
       <main className="bg-slate-200 rounded-md p-4 flex flex-col justify-center items-center min-h-screen md:col-span-2">
         <div className="max-w-xl w-full">
           <p className="text-lg mb-4">

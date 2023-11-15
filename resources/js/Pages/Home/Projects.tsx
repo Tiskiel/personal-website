@@ -1,5 +1,6 @@
-import Card, { CardProps } from '@/Components/Card';
+import { CardProps } from '@/Components/Card';
 import HomeLayout from '@/Layouts/HomeLayout';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shadcn/ui/card';
 import { GitHubLogoIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 import { ReactNode } from 'react';
 
@@ -37,10 +38,24 @@ function Projects() {
       ],
     },
   ];
+
   return (
-    <div className="w-screen grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+    <div className="w-full grid grid-cols-1 gap-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
       {cards.map((card, index) => (
-        <Card key={index} {...card} />
+        <Card key={index} className="bg-gradient-to-r from-indigo-200">
+          <CardHeader>
+            <CardTitle>{card.title}</CardTitle>
+            <CardDescription>{card.description}</CardDescription>
+          </CardHeader>
+          <CardContent></CardContent>
+          <CardFooter>
+            {card.logos.map(logo => (
+              <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <a href={logo.link}>{logo.icon}</a>
+              </span>
+            ))}
+          </CardFooter>
+        </Card>
       ))}
     </div>
   );
