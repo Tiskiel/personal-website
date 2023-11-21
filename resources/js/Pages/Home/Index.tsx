@@ -45,7 +45,6 @@ function Index() {
           Outside of coding, I love strolling in nature and exploring new horizons with my family.
         </p>
       </aside>
-      <ProjectShow />
     </div>
   );
 }
