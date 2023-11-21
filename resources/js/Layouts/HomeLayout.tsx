@@ -44,7 +44,9 @@ export default function HomeLayout({ children }: PropsWithChildren) {
           </div>
         </div>
       </div>
-      <div className="mt-80 max-w-5XL mx-auto flex flex-col sm:flex-row px-4 sm:px-6 lg:px-8">{children}</div>
+      <div className="mt-80 max-w-5XL mx-auto flex flex-col justify-center sm:flex-row px-4 sm:px-6 lg:px-8">
+        {children}
+      </div>
       <HomeFooter />
     </div>
   );

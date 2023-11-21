@@ -49,8 +49,11 @@ function Projects() {
           </CardHeader>
           <CardContent></CardContent>
           <CardFooter>
-            {card.logos.map(logo => (
-              <span className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            {card.logos.map((logo, index) => (
+              <span
+                key={index}
+                className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+              >
                 <a href={logo.link}>{logo.icon}</a>
               </span>
             ))}
