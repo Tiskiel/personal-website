@@ -13,7 +13,7 @@ class MailController extends Controller
             'from' => 'Acme <onboarding@resend.dev>',
             'to' => $data->email,
             'subject' => $data->subject,
-            'html' => '<p>Hi I\'m'.$data->name.',</p><p>'.$data->message.'</p>',
+            'html' => '<p>Hi I\'m' . $data->name . ',</p><p>' . $data->message . '</p>',
         ]);
     }
 }

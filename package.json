@@ -47,7 +47,8 @@
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",
         "tailwind-merge": "^1.14.0",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "ziggy-js": "^1.8.1"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"

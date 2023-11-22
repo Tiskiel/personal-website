@@ -3,9 +3,9 @@ import { ChevronDownIcon, ExclamationCircleIcon } from '@heroicons/react/20/soli
 import { Switch } from '@headlessui/react';
 import HomeLayout from '@/Layouts/HomeLayout';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ');
+// }
 
 function Contact() {
   const [agreed, setAgreed] = useState(false);
