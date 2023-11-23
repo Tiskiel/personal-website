@@ -1,5 +1,15 @@
 import { PropsWithChildren } from 'react';
 import HomeFooter from './Components/HomeFooter';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/shadcn/ui/dropdown-menu';
+import { Link } from '@inertiajs/react';
+import { Bars3BottomLeftIcon } from '@heroicons/react/24/solid';
 
 const profile = {
   name: 'Jean-François Wanty',
@@ -15,9 +25,29 @@ const profile = {
 };
 
 export default function HomeLayout({ children }: PropsWithChildren) {
+  const menu = (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Bars3BottomLeftIcon className="h-4 w-4 font-bold" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>
+          <Link href={route('home')}>About</Link>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <Link href={route('contact')}>Contact</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={route('projects')}>Projects</Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
   return (
     <div>
-      <div className="fixed top-0 w-full bg-white z-10">
+      <div className="fixed top-0 w-full backdrop-blur-sm z-10">
         <div>
           <div>
             <img className="h-32 w-full object-cover lg:h-48" src={profile.backgroundImage} alt="" />
@@ -34,7 +64,9 @@ export default function HomeLayout({ children }: PropsWithChildren) {
               <div className="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                 <div className="mt-6 min-w-0 flex-1 sm:hidden md:block">
                   <h1 className="truncate text-2xl font-bold text-gray-900">{profile.name}</h1>
-                  <h3 className="text-sm font-medium text-gray-500">{profile.fields[1][1]}</h3>
+                  <h3 className="text-sm font-medium text-gray-500">
+                    {profile.fields[1][1]} <span className="font-bold">{menu}</span>
+                  </h3>
                 </div>
               </div>
             </div>

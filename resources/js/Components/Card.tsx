@@ -4,6 +4,7 @@ import { useState } from 'react';
 export type logos = {
   link: string;
   icon: JSX.Element;
+  description: string;
 };
 
 export type CardProps = {

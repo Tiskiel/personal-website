@@ -1,5 +1,8 @@
 import { CardProps } from '@/Components/Card';
+import PrimaryButton from '@/Components/PrimaryButton';
+import SecondaryButton from '@/Components/SecondaryButton';
 import HomeLayout from '@/Layouts/HomeLayout';
+import { Button } from '@/shadcn/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shadcn/ui/card';
 import { GitHubLogoIcon, VercelLogoIcon } from '@radix-ui/react-icons';
 import { ReactNode } from 'react';
@@ -14,10 +17,12 @@ function Projects() {
         {
           link: 'https://github.com/Tiskiel/pokemonFinder',
           icon: <GitHubLogoIcon className="h-6 w-6" />,
+          description: 'Code',
         },
         {
           link: 'https://pokemonfinder-ivory.vercel.app/home',
           icon: <VercelLogoIcon className="h-6 w-6" />,
+          description: 'Preview',
         },
       ],
     },
@@ -30,31 +35,36 @@ function Projects() {
         {
           link: 'https://github.com/Tiskiel/MovieBrowserIonic/tree/main',
           icon: <GitHubLogoIcon className="h-6 w-6" />,
+          description: 'Code',
         },
         {
           link: 'https://movie-browser-ionic-peer-coding-ymmk.vercel.app/tabs/tab1',
           icon: <VercelLogoIcon className="h-6 w-6" />,
+          description: 'Preview',
         },
       ],
     },
   ];
 
   return (
-    <div className="w-full grid grid-cols-1 gap-2  md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+    <div className="w-full grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-7">
       {cards.map((card, index) => (
-        <Card key={index} className="bg-gradient-to-r from-indigo-200">
+        <Card key={index} className="relative bg-slate-50">
           <CardHeader>
-            <CardTitle>{card.title}</CardTitle>
-            <CardDescription>{card.description}</CardDescription>
+            <CardTitle className="text-lg">{card.title}</CardTitle>
+            <CardDescription className="mt-4">{card.description}</CardDescription>
           </CardHeader>
-          <CardContent></CardContent>
           <CardFooter>
             {card.logos.map((logo, index) => (
               <span
                 key={index}
                 className="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
               >
-                <a href={logo.link}>{logo.icon}</a>
+                <Button variant="outline" className="flex justify-between">
+                  <a className="mx-2" href={logo.link}>
+                    {logo.icon}
+                  </a>
+                </Button>
               </span>
             ))}
           </CardFooter>
