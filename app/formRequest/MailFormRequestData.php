@@ -2,6 +2,8 @@
 
 namespace App\formRequest;
 
+use App\Enum\PhoneZoneEnum;
+use Illuminate\Validation\Rule;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
@@ -9,9 +11,12 @@ use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 class MailFormRequestData extends Data
 {
     public function __construct(
-        public string $name,
+        public string $first_name,
+        public string $last_name,
         public string $email,
-        public string $subject,
+        public PhoneZoneEnum $phone_zone,
+        public string $phone,
+        public string $company,
         public string $message,
     ) {
     }
@@ -19,10 +24,13 @@ class MailFormRequestData extends Data
     public static function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:2', 'max:100'],
-            'email' => ['required', 'email'],
-            'subject' => ['required', 'string', 'min:5', 'max:100'],
-            'message' => ['required', 'string', 'min:10', 'max:1000'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email:rfc,dns', 'max:255'],
+            'phone_zone' => ['required', Rule::enum(PhoneZoneEnum::class), 'max:2'],
+            'phone' => ['required', 'string', 'max:255'],
+            'company' => ['required', 'string', 'max:255'],
+            'message' => ['required', 'string', 'max:255'],
         ];
     }
 }

@@ -12,8 +12,8 @@ class MailController extends Controller
         Resend::emails()->send([
             'from' => 'Acme <onboarding@resend.dev>',
             'to' => $data->email,
-            'subject' => $data->subject,
-            'html' => '<p>Hi I\'m' . $data->name . ',</p><p>' . $data->message . '</p>',
+            'subject' => 'New mail from'.' '.$data->company ?? $data->first_name,
+            'html' => '<p>Hi I\'m'.' '.$data->first_name.' '.$data->last_name.',</p><p>'.$data->message.'</p>',
         ]);
     }
 }

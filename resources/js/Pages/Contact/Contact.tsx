@@ -1,7 +1,11 @@
-import { ReactNode, useState } from 'react';
+import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import { ChevronDownIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid';
-import { Switch } from '@headlessui/react';
 import HomeLayout from '@/Layouts/HomeLayout';
+import { useForm } from '@inertiajs/react';
+import { InertiaFormProps } from '../../../../node_modules/@inertiajs/react/types/useForm';
+import { MailFormRequestData, PhoneZoneEnum } from '@/types/generated';
+import { Toaster } from '@/shadcn/ui/toaster';
+import { useToast } from '@/shadcn/ui/use-toast';
 
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ');
@@ -9,6 +13,31 @@ import HomeLayout from '@/Layouts/HomeLayout';
 
 function Contact() {
   const [agreed, setAgreed] = useState(false);
+  const { toast } = useToast();
+  const sendEmailForm = useForm<MailFormRequestData>({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone_zone: PhoneZoneEnum.EU,
+    phone: '',
+    company: '',
+    message: '',
+  });
+
+  function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    sendEmailForm.post(route('send.mail'));
+  }
+
+  useEffect(() => {
+    if (sendEmailForm.wasSuccessful) {
+      toast({
+        title: 'Message: send',
+        description: 'Thank you, your message has been sent successfully',
+      });
+      sendEmailForm.reset();
+    }
+  }, [sendEmailForm.wasSuccessful]);
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -26,12 +55,14 @@ function Contact() {
       </div>
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact me</h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">
-          Please note that this page is under construction.
-          {/* Leave your contact details to stay in touch. */}
-        </p>
+        <p className="mt-2 text-lg leading-8 text-gray-600">Leave your contact details to stay in touch.</p>
       </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form
+        action={route('send.mail')}
+        method="POST"
+        onSubmit={e => submit(e)}
+        className="mx-auto mt-16 max-w-xl sm:mt-20"
+      >
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -44,6 +75,7 @@ function Contact() {
                 id="first-name"
                 autoComplete="given-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onChange={e => sendEmailForm.setData('first_name', e.target.value)}
               />
             </div>
           </div>
@@ -58,6 +90,7 @@ function Contact() {
                 id="last-name"
                 autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onChange={e => sendEmailForm.setData('last_name', e.target.value)}
               />
             </div>
           </div>
@@ -72,6 +105,7 @@ function Contact() {
                 id="company"
                 autoComplete="organization"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onChange={e => sendEmailForm.setData('company', e.target.value)}
               />
             </div>
           </div>
@@ -86,6 +120,7 @@ function Contact() {
                 id="email"
                 autoComplete="email"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onChange={e => sendEmailForm.setData('email', e.target.value)}
               />
             </div>
           </div>
@@ -102,10 +137,19 @@ function Contact() {
                   id="country"
                   name="country"
                   className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                  onChange={e => {
+                    const inputValue: string = e.target.value;
+
+                    if (Object.values(PhoneZoneEnum).includes(inputValue as PhoneZoneEnum)) {
+                      sendEmailForm.setData('phone_zone', inputValue as PhoneZoneEnum);
+                    }
+                  }}
+                  defaultValue={PhoneZoneEnum.EU}
                 >
                   <option>US</option>
                   <option>CA</option>
                   <option>EU</option>
+                  <option>FR</option>
                 </select>
                 <ChevronDownIcon
                   className="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
@@ -118,6 +162,7 @@ function Contact() {
                 id="phone-number"
                 autoComplete="tel"
                 className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onChange={e => sendEmailForm.setData('phone', e.target.value)}
               />
             </div>
           </div>
@@ -131,6 +176,7 @@ function Contact() {
                 id="message"
                 rows={4}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                onChange={e => sendEmailForm.setData('message', e.target.value)}
                 defaultValue={''}
               />
             </div>
@@ -173,6 +219,7 @@ function Contact() {
           </button>
         </div>
       </form>
+      <Toaster />
     </div>
   );
 }
