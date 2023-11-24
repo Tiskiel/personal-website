@@ -6,6 +6,7 @@ export interface User {
 }
 
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+  google_analytics_id: string;
   auth: {
     user: User;
   };

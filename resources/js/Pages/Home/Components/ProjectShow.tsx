@@ -8,10 +8,12 @@ export default function ProjectShow() {
     {
       link: 'https://github.com/Tiskiel/pokemonFinder',
       icon: <GitHubLogoIcon className="h-6 w-6" />,
+      description: 'Code',
     },
     {
       link: 'https://pokemonfinder-ivory.vercel.app/home',
       icon: <VercelLogoIcon className="h-6 w-6" />,
+      description: 'Preview',
     },
   ];
 
