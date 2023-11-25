@@ -32,7 +32,6 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            'google_analytics_id' => config('services.google_analytics.id'),
             'auth' => [
                 'user' => $request->user(),
             ],

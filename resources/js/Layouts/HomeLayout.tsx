@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren } from 'react';
 import HomeFooter from './Components/HomeFooter';
 import {
   DropdownMenu,
@@ -8,10 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/shadcn/ui/dropdown-menu';
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/solid';
-import ReactGA from 'react-ga';
-import { PageProps } from '@/types';
 
 const profile = {
   name: 'Jean-François Wanty',
@@ -27,14 +25,6 @@ const profile = {
 };
 
 export default function HomeLayout({ children }: PropsWithChildren) {
-  const { url } = usePage();
-  const { google_analytics_id } = usePage<PageProps>().props;
-  ReactGA.initialize(google_analytics_id);
-
-  useEffect(() => {
-    ReactGA.pageview(url);
-  }, [url]);
-
   const menu = (
     <DropdownMenu>
       <DropdownMenuTrigger>
