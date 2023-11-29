@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.8",
         "resend/resend-laravel": "^0.7.0",
         "resend/resend-php": "^0.8.0",
+        "sentry/sentry-laravel": "^4.1",
         "spatie/enum": "^3.13",
         "spatie/laravel-data": "^3.9",
         "spatie/laravel-typescript-transformer": "^2.3",
