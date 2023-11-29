@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import { ChevronDownIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid';
 import HomeLayout from '@/Layouts/HomeLayout';
 import { useForm } from '@inertiajs/react';
-import { InertiaFormProps } from '../../../../node_modules/@inertiajs/react/types/useForm';
 import { MailFormRequestData, PhoneZoneEnum } from '@/types/generated';
 import { Toaster } from '@/shadcn/ui/toaster';
 import { useToast } from '@/shadcn/ui/use-toast';
@@ -77,6 +76,12 @@ function Contact() {
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('first_name', e.target.value)}
               />
+              {sendEmailForm.errors.first_name && (
+                <div className="flex items-center mt-2 text-sm text-red-600">
+                  <ExclamationCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                  <span>{sendEmailForm.errors.first_name}</span>
+                </div>
+              )}
             </div>
           </div>
           <div>
@@ -93,6 +98,12 @@ function Contact() {
                 onChange={e => sendEmailForm.setData('last_name', e.target.value)}
               />
             </div>
+            {sendEmailForm.errors.last_name && (
+              <div className="flex items-center mt-2 text-sm text-red-600">
+                <ExclamationCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                <span>{sendEmailForm.errors.last_name}</span>
+              </div>
+            )}
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="company" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -108,6 +119,12 @@ function Contact() {
                 onChange={e => sendEmailForm.setData('company', e.target.value)}
               />
             </div>
+            {sendEmailForm.errors.company && (
+              <div className="flex items-center mt-2 text-sm text-red-600">
+                <ExclamationCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                <span>{sendEmailForm.errors.company}</span>
+              </div>
+            )}
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -123,6 +140,12 @@ function Contact() {
                 onChange={e => sendEmailForm.setData('email', e.target.value)}
               />
             </div>
+            {sendEmailForm.errors.email && (
+              <div className="flex items-center mt-2 text-sm text-red-600">
+                <ExclamationCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                <span>{sendEmailForm.errors.email}</span>
+              </div>
+            )}
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="phone-number" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -148,7 +171,7 @@ function Contact() {
                 >
                   <option>US</option>
                   <option>CA</option>
-                  <option>EU</option>
+                  <option>BE</option>
                   <option>FR</option>
                 </select>
                 <ChevronDownIcon
@@ -165,6 +188,12 @@ function Contact() {
                 onChange={e => sendEmailForm.setData('phone', e.target.value)}
               />
             </div>
+            {sendEmailForm.errors.phone && (
+              <div className="flex items-center mt-2 text-sm text-red-600">
+                <ExclamationCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                <span>{sendEmailForm.errors.phone}</span>
+              </div>
+            )}
           </div>
           <div className="sm:col-span-2">
             <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -180,6 +209,12 @@ function Contact() {
                 defaultValue={''}
               />
             </div>
+            {sendEmailForm.errors.message && (
+              <div className="flex items-center mt-2 text-sm text-red-600">
+                <ExclamationCircleIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400" aria-hidden="true" />
+                <span>{sendEmailForm.errors.message}</span>
+              </div>
+            )}
           </div>
           {/* <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
             <div className="flex h-6 items-center">
