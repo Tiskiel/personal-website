@@ -8,7 +8,7 @@ export type MailFormRequestData = {
   message: string;
 };
 export enum PhoneZoneEnum {
-  'EU' = 'EU',
+  'BE' = 'BE',
   'US' = 'US',
   'CA' = 'CA',
   'FR' = 'FR',

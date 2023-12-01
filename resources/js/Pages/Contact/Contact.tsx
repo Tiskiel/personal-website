@@ -5,6 +5,7 @@ import { useForm } from '@inertiajs/react';
 import { MailFormRequestData, PhoneZoneEnum } from '@/types/generated';
 import { Toaster } from '@/shadcn/ui/toaster';
 import { useToast } from '@/shadcn/ui/use-toast';
+import { send } from 'process';
 
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ');
@@ -13,11 +14,12 @@ import { useToast } from '@/shadcn/ui/use-toast';
 function Contact() {
   const [agreed, setAgreed] = useState(false);
   const { toast } = useToast();
+
   const sendEmailForm = useForm<MailFormRequestData>({
     first_name: '',
     last_name: '',
     email: '',
-    phone_zone: PhoneZoneEnum.EU,
+    phone_zone: PhoneZoneEnum.BE,
     phone: '',
     company: '',
     message: '',
@@ -25,18 +27,23 @@ function Contact() {
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    sendEmailForm.post(route('send.mail'));
-  }
+    const formElement = e.currentTarget;
 
-  useEffect(() => {
-    if (sendEmailForm.wasSuccessful) {
-      toast({
-        title: 'Message: send',
-        description: 'Thank you, your message has been sent successfully',
-      });
-      sendEmailForm.reset();
-    }
-  }, [sendEmailForm.wasSuccessful]);
+    sendEmailForm.post(route('send.mail'), {
+      preserveScroll: true,
+      onSuccess: page => {
+        formElement.reset();
+
+        sendEmailForm.reset();
+        sendEmailForm.clearErrors();
+        sendEmailForm.setDefaults();
+        toast({
+          title: 'Message: send',
+          description: 'Thank you, your message has been sent successfully',
+        });
+      },
+    });
+  }
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -73,6 +80,7 @@ function Contact() {
                 name="first-name"
                 id="first-name"
                 autoComplete="given-name"
+                defaultValue={sendEmailForm.data.first_name}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('first_name', e.target.value)}
               />
@@ -93,6 +101,7 @@ function Contact() {
                 type="text"
                 name="last-name"
                 id="last-name"
+                defaultValue={sendEmailForm.data.last_name}
                 autoComplete="family-name"
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('last_name', e.target.value)}
@@ -115,6 +124,7 @@ function Contact() {
                 name="company"
                 id="company"
                 autoComplete="organization"
+                defaultValue={sendEmailForm.data.company}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('company', e.target.value)}
               />
@@ -136,6 +146,7 @@ function Contact() {
                 name="email"
                 id="email"
                 autoComplete="email"
+                defaultValue={sendEmailForm.data.email}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('email', e.target.value)}
               />
@@ -167,7 +178,7 @@ function Contact() {
                       sendEmailForm.setData('phone_zone', inputValue as PhoneZoneEnum);
                     }
                   }}
-                  defaultValue={PhoneZoneEnum.EU}
+                  defaultValue={PhoneZoneEnum.BE}
                 >
                   <option>US</option>
                   <option>CA</option>
@@ -184,6 +195,7 @@ function Contact() {
                 name="phone-number"
                 id="phone-number"
                 autoComplete="tel"
+                defaultValue={sendEmailForm.data.phone}
                 className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('phone', e.target.value)}
               />
@@ -206,7 +218,7 @@ function Contact() {
                 rows={4}
                 className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 onChange={e => sendEmailForm.setData('message', e.target.value)}
-                defaultValue={''}
+                defaultValue={sendEmailForm.data.message}
               />
             </div>
             {sendEmailForm.errors.message && (
