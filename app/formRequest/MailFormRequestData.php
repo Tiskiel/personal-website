@@ -28,7 +28,7 @@ class MailFormRequestData extends Data
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email:rfc,dns', 'max:255'],
             'phone_zone' => ['required', Rule::enum(PhoneZoneEnum::class), 'max:2'],
-            'phone' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'regex:/[0-9]{9,10}/', 'max:255'],
             'company' => ['required', 'string', 'max:255'],
             'message' => ['required', 'string', 'max:255'],
         ];
