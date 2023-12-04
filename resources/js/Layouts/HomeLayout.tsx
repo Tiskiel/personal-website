@@ -56,7 +56,7 @@ export default function HomeLayout({ children }: PropsWithChildren) {
             <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
               <div className="flex">
                 <img
-                  className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32 object-cover"
+                  className="h-24 w-24 rounded-full ring-4 ring-white backdrop-grayscale-0 sm:h-32 sm:w-32 object-cover"
                   src={profile.avatar}
                   alt=""
                 />
