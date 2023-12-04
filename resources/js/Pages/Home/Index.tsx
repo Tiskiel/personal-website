@@ -1,6 +1,5 @@
 import HomeLayout from '@/Layouts/HomeLayout';
 import { ReactNode } from 'react';
-import ProjectShow from './Components/ProjectShow';
 import MainSection from './Components/MainSection';
 
 function Index() {
