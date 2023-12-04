@@ -49,12 +49,12 @@ function Projects() {
   return (
     <div className="w-full grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-7">
       {cards.map((card, index) => (
-        <Card key={index} className="relative bg-slate-50">
+        <Card key={index} className="flex flex-col relative bg-slate-50">
           <CardHeader>
             <CardTitle className="text-lg">{card.title}</CardTitle>
             <CardDescription className="mt-4">{card.description}</CardDescription>
           </CardHeader>
-          <CardFooter>
+          <CardFooter className="mt-auto">
             {card.logos.map((logo, index) => (
               <span
                 key={index}
